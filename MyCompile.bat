@@ -30,9 +30,11 @@ call "setenv.bat" %WINDDK7ROOT% %CHK_OR_FRE% %X86_OR_X64% %WXP_OR_WIN7%
 cd /d "%3"
 build
 
+if not "1"=="%errorlevel%" (
 cd /d "%4"
 if not exist "%4\%1\%X86_OR_X64%" (
 mkdir "%4\%1\%X86_OR_X64%"
 )
 copy /y "%3\obj%CHK_OR_FRE%_%WXP_OR_WIN7%_%X86_OR_AMD64%\%I386_OR_AMD64%\%5.sys" "%4\%1\%X86_OR_X64%\%5.sys"
 copy /y "%3\obj%CHK_OR_FRE%_%WXP_OR_WIN7%_%X86_OR_AMD64%\%I386_OR_AMD64%\%5.pdb" "%4\%1\%X86_OR_X64%\%5.pdb"
+)
